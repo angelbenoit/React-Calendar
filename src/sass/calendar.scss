@@ -1,0 +1,21 @@
+.calendar{
+
+}
+
+.week-row{
+
+}
+
+.week-day{
+    padding: 3rem;
+    height: 3rem;
+    border: 1px solid black;
+    text-align: center;
+
+    &-name{
+        padding: 3rem;
+        height: 3rem;
+        border: 1px solid black;
+        text-align: center;
+    }
+}

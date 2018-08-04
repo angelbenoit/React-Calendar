@@ -1,2 +1,10 @@
-.test {
-  background-color: green; }
+.week-day {
+  padding: 3rem;
+  height: 3rem;
+  border: 1px solid black;
+  text-align: center; }
+  .week-day-name {
+    padding: 3rem;
+    height: 3rem;
+    border: 1px solid black;
+    text-align: center; }
