@@ -41,16 +41,10 @@ class LandingPage extends Component {
             display.push(dates[k])
         }
 
-        //the third for loop fills in the second set of empty boxes
-        //starts at 0 and counts up to (35 minus the amount of items in the display array)
-        const endEmpty = Math.abs(35-(Number(dates[dates.length-1].dayNum))+firstDayOfMonth);
-        //endEmpty holds the number of remaining available spots in the 35 length of the calendar
-        //it takes 35 and subtracts it by the amount of starting empty spots and day number of the last
-        //day of the week
-        //for example in august 2018, the calendar starts with 3 empty spots because month starts on wednsday
-        //and the last day of the month is the 31st, so we have 35 - (31 + 3) = 1, so we have one spot remaining
-        for(let l = 0; l < endEmpty; l++){
-          display.push("EMPTY");
+        //lastly, we have a while loop to keep filling the array so the calendar
+        //length is divisible by 7 because every row has 7 days in it
+        while(display.length%7 !== 0){
+            display.push("Empty")
         }
     }
 
