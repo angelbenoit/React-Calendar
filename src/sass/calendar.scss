@@ -1,21 +1,50 @@
-.calendar{
+$height: 6rem;
+$width: 6rem;;
+$box-border: 1px solid black;
 
+.arrows{
+    padding: 0 1rem;
+    cursor: pointer;
+
+    &:hover{
+        color: grey;
+    }
 }
 
-.week-row{
+.calendar{
+    text-align: center;
+    background-color: blue;
 
+    &_header{
+        color: white;
+        font-size: 2rem;
+        font-weight: bold;
+        background-color: green;
+    }
+}
+
+.week-blank{
+    height: $height;
+    border: $box-border;
+    width: $width;
+}
+
+.week-name{
+    height: $height;
+    width: $width;
+
+    &__row{
+        background-color: green;
+    }
 }
 
 .week-day{
-    padding: 3rem;
-    height: 3rem;
-    border: 1px solid black;
-    text-align: center;
+    height: $height;
+    border: $box-border;
+    width: $width;
 
-    &-name{
-        padding: 3rem;
-        height: 3rem;
-        border: 1px solid black;
-        text-align: center;
+    &:hover{
+        background-color: grey;
+        cursor: pointer;
     }
 }
