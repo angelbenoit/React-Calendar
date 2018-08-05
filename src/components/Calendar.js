@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter  } from 'react-router-dom';
 
 class LandingPage extends Component {
     constructor(props){
@@ -10,6 +11,7 @@ class LandingPage extends Component {
         }
 
         this.changeDate = this.changeDate.bind(this);
+        this.redirectToSpecifiedDate = this.redirectToSpecifiedDate.bind(this);
     }
 
     changeDate(format ,direction){
@@ -92,7 +94,12 @@ class LandingPage extends Component {
         //the second for loop fills in the boxes with actual dates, it will be filled in
         //with the day of the week and month number
         for (let k = 0; k < Number(dates[dates.length - 1].dayNum); k++) {
-            display[k + firstDayOfMonth] = <td className="week-day">{dates[k].dayNum}</td>;
+            display[k + firstDayOfMonth] =  (<td
+                                                className="week-day"
+                                                onClick={() => this.redirectToSpecifiedDate(dates[k].dayNum)}
+                                            >
+                                                {dates[k].dayNum}
+                                            </td>);
         }
 
         return this.displayCalendar(display);
@@ -156,6 +163,10 @@ class LandingPage extends Component {
         }
     }
 
+    redirectToSpecifiedDate(day){
+        this.props.history.push(`${this.state.month}/${day}/${this.state.year}`)
+    }
+
     render() {
         const test = this.getDaysInMonth(this.state.month, this.state.year);
         const cal = this.fillCalendar(test);
@@ -179,4 +190,4 @@ class LandingPage extends Component {
     }
 }
 
-export default LandingPage;
+export default withRouter(LandingPage);
