@@ -10,6 +10,10 @@ class SpecifiedDay extends Component {
             this.props.history.push("/");
     }
 
+    redirectToCalendar(){
+        this.props.history.push("/");
+    }
+
     validateDays() {
         const month = Number(this.props.match.params.month);
         const year = Number(this.props.match.params.year);
@@ -45,6 +49,9 @@ class SpecifiedDay extends Component {
         return (
             <div>
                 <div className="day-header">
+                    <p className="day-header-back" onClick={() => this.redirectToCalendar()}>
+                        <i class="fa fa-arrow-left"></i> Go Back
+                    </p>
                     <div className="day-header-date">
                         <p className="day-header__item">{getMonthName(Number(this.props.match.params.month) - 1)}</p>
                         <p className="day-header__item">{Number(this.props.match.params.day)}</p>

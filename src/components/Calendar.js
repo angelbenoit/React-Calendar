@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { withRouter  } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { getMonthName, getMonthStart } from '../getDates';
 
 class LandingPage extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
 
         this.state = {
@@ -11,26 +11,45 @@ class LandingPage extends Component {
             year: 2018
         }
 
-        this.changeDate = this.changeDate.bind(this);
+        this.addMonth = this.addMonth.bind(this);
+        this.subtractMonth = this.subtractMonth.bind(this);
+        this.changeYear = this.changeYear.bind(this);
         this.redirectToSpecifiedDate = this.redirectToSpecifiedDate.bind(this);
     }
 
-    changeDate(format ,direction){
+    addMonth(){
+        if(this.state.month === 11)
+            this.setState((prevState) => {
+                return { year: prevState.year + 1, month: 0}
+            })
+        else
+            this.setState((prevState) => {
+                return { month: prevState.month + 1 }
+            });
+    }
+
+    subtractMonth(){
+        if(this.state.month === 0)
+            this.setState((prevState) => {
+                return { year: prevState.year - 1, month: 11}
+            })
+        else
+            this.setState((prevState) => {
+                return { month: prevState.month - 1}
+            });
+    }
+
+    changeYear(direction) {
         let directionNum;
 
-        if(direction === "forward")
+        if (direction === "forward")
             directionNum = 1;
         else
             directionNum = -1;
 
-        if(format === "month")
-            this.setState((prevState) => {
-                return {month: prevState[format] + directionNum }
-            });
-        else
-            this.setState((prevState) => {
-                return {year: prevState[format] + directionNum }
-            });
+        this.setState((prevState) => {
+            return { year: prevState.year + directionNum }
+        });
     }
 
 
@@ -95,12 +114,12 @@ class LandingPage extends Component {
         //the second for loop fills in the boxes with actual dates, it will be filled in
         //with the day of the week and month number
         for (let k = 0; k < Number(dates[dates.length - 1].dayNum); k++) {
-            display[k + firstDayOfMonth] =  (<td
-                                                className="week-day"
-                                                onClick={() => this.redirectToSpecifiedDate(dates[k].dayNum)}
-                                            >
-                                                {dates[k].dayNum}
-                                            </td>);
+            display[k + firstDayOfMonth] = (<td
+                className="week-day"
+                onClick={() => this.redirectToSpecifiedDate(dates[k].dayNum)}
+            >
+                {dates[k].dayNum}
+            </td>);
         }
 
         return this.displayCalendar(display);
@@ -116,8 +135,8 @@ class LandingPage extends Component {
         return days;
     }
 
-    redirectToSpecifiedDate(day){
-        this.props.history.push(`${this.state.month+1}/${day}/${this.state.year}`)
+    redirectToSpecifiedDate(day) {
+        this.props.history.push(`${this.state.month + 1}/${day}/${this.state.year}`)
     }
 
     render() {
@@ -127,11 +146,11 @@ class LandingPage extends Component {
         return (
             <div className="calendar">
                 <div className="calendar_header">
-                    <i className="fa fa-angle-double-left arrows" onClick={() => this.changeDate("year", "backward")}></i>
-                    <i className="fa fa-angle-left arrows" onClick={() => this.changeDate("month", "backward")}></i>
+                    <i className="fa fa-angle-double-left arrows" onClick={() => this.changeYear("backward")}></i>
+                    <i className="fa fa-angle-left arrows" onClick={this.subtractMonth}></i>
                     {month} {this.state.year}
-                    <i className="fa fa-angle-right arrows" onClick={() => this.changeDate("month", "forward")}></i>
-                    <i className="fa fa-angle-double-right arrows" onClick={() => this.changeDate("year", "forward")}></i>
+                    <i className="fa fa-angle-right arrows" onClick={this.addMonth}></i>
+                    <i className="fa fa-angle-double-right arrows" onClick={() => this.changeYear("forward")}></i>
 
                 </div>
 
