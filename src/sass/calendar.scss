@@ -1,25 +1,40 @@
 $height: 6rem;
-$width: 6rem;;
-$box-border: 1px solid black;
+$width: 6rem;
+
+$height-small: 3rem;
+$width-small: 3rem;
+
+$box-border: 1px solid #ABAEF7;
 
 .arrows{
-    padding: 0 1rem;
+    padding: 1rem 1.5rem;
     cursor: pointer;
 
+    @media only screen and (max-width: 600px) {
+        padding: .5rem 1rem;
+    }
+
     &:hover{
-        color: grey;
+        color: rgb(121, 125, 238);
     }
 }
 
 .calendar{
     text-align: center;
-    background-color: blue;
+    color: white;
+    background-color: white;
+    border: $box-border;
+    font-family: Arial, Helvetica, sans-serif;
 
     &_header{
         color: white;
         font-size: 2rem;
         font-weight: bold;
-        background-color: green;
+        background-color: #ABAEF7;
+
+        @media only screen and (max-width: 600px) {
+            font-size: 1rem;
+        }
     }
 }
 
@@ -27,6 +42,11 @@ $box-border: 1px solid black;
     height: $height;
     border: $box-border;
     width: $width;
+
+    @media only screen and (max-width: 600px) {
+        height: $height-small;
+        width: $width-small;
+    }
 }
 
 .week-name{
@@ -34,7 +54,14 @@ $box-border: 1px solid black;
     width: $width;
 
     &__row{
-        background-color: green;
+        background-color: #ABAEF7;
+        font-size: 1.5rem;
+
+        @media only screen and (max-width: 600px) {
+            font-size: 1rem;
+            height: $height-small;
+            width: $width-small;
+        }
     }
 }
 
@@ -42,9 +69,16 @@ $box-border: 1px solid black;
     height: $height;
     border: $box-border;
     width: $width;
+    color: rgb(132, 135, 240);
+
+    @media only screen and (max-width: 600px) {
+        height: $height-small;
+        width: $width-small;
+    }
 
     &:hover{
-        background-color: grey;
+        background-color: #ABAEF7;
+        color: white;
         cursor: pointer;
     }
 }
