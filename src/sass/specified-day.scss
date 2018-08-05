@@ -1,0 +1,20 @@
+.day-header{
+    display: flex;
+    font-size: 3rem;
+    font-weight: bold;
+    background-color: #ABAEF7;
+    color: white;
+    min-height: 20vh;
+    width: 100%;
+    margin: 0 auto;
+
+    &-date{
+        display: flex;
+        width: 50%;
+        margin: auto;
+    }
+
+    &__item{
+        margin-left: 2rem;
+    }
+}

@@ -1,37 +1,41 @@
 import React, { Component } from 'react';
 import { getMonthName, daysInMonth } from '../getDates';
+import { withRouter } from 'react-router-dom';
 
 class SpecifiedDay extends Component {
-    componentDidMount(){
-        if(this.validateMonth() && this.validateDays())
-            alert("VALID DATE");
+    componentDidMount() {
+        if (this.validateMonth() && this.validateDays())
+            console.log("VALID DATE");
         else
-            alert("NOT VALID DATE");
+            this.props.history.push("/");
     }
 
-    validateDays(){
+    validateDays() {
         const month = Number(this.props.match.params.month);
         const year = Number(this.props.match.params.year);
         const days = Number(this.props.match.params.day);
         const dayCount = daysInMonth(month, year);
-        if(dayCount < days || days < 1)
+        if (dayCount < days || days < 1)
             return false;
         else
             return true;
     }
 
-    validateMonth(){
+    validateMonth() {
         const months = [
-            "january","february",
-            "march","april",
-            "may","june",
+            "january", "february",
+            "march", "april",
+            "may", "june",
             "july", "august",
-            "september","october",
-            "november","december"
+            "september", "october",
+            "november", "december"
         ];
-        const monthName = getMonthName(Number(this.props.match.params.month));
-        for(let i = 0; i < months.length; i++){
-            if(months[i] === monthName.toLowerCase())
+        if (Number(this.props.match.params.month) - 1 > 12 || Number(this.props.match.params.month) - 1 < 1)
+            return false;
+
+        const monthName = getMonthName(Number(this.props.match.params.month) - 1);
+        for (let i = 0; i < months.length; i++) {
+            if (months[i] === monthName.toLowerCase())
                 return true;
         }
         return false;
@@ -40,12 +44,17 @@ class SpecifiedDay extends Component {
     render() {
         return (
             <div>
-                <h1>{getMonthName(Number(this.props.match.params.month))}</h1>
-                <h2>{this.props.match.params.day}</h2>
-                <h3>{this.props.match.params.year}</h3>
+                <div className="day-header">
+                    <div className="day-header-date">
+                        <p className="day-header__item">{getMonthName(Number(this.props.match.params.month) - 1)}</p>
+                        <p className="day-header__item">{Number(this.props.match.params.day)}</p>
+                        <p className="day-header__item">{this.props.match.params.year}</p>
+                    </div>
+                </div>
+
             </div>
         );
     }
 }
 
-export default SpecifiedDay;
+export default withRouter(SpecifiedDay);

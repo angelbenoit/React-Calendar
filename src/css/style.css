@@ -61,3 +61,20 @@
     background-color: #ABAEF7;
     color: white;
     cursor: pointer; }
+
+.day-header {
+  display: flex;
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  background-color: #ABAEF7;
+  color: white;
+  min-height: 20vh;
+  width: 100%;
+  margin: 0 auto; }
+  .day-header-date {
+    display: flex;
+    width: 50%;
+    margin: auto; }
+  .day-header__item {
+    margin-left: 2rem; }

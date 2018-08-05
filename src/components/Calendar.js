@@ -117,7 +117,7 @@ class LandingPage extends Component {
     }
 
     redirectToSpecifiedDate(day){
-        this.props.history.push(`${this.state.month}/${day}/${this.state.year}`)
+        this.props.history.push(`${this.state.month+1}/${day}/${this.state.year}`)
     }
 
     render() {
