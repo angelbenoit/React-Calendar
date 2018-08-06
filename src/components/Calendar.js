@@ -118,7 +118,7 @@ class LandingPage extends Component {
                 className="week-day"
                 onClick={() => this.redirectToSpecifiedDate(dates[k].dayNum)}
             >
-                {dates[k].dayNum}
+                {Number(dates[k].dayNum)}
             </td>);
         }
 

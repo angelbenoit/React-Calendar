@@ -67,19 +67,27 @@
   font-weight: bold;
   background-color: #ABAEF7;
   color: white;
-  min-height: 20vh;
-  width: 100%;
-  margin: 0 auto; }
+  min-height: 20vh; }
   .day-header-back {
     margin: auto;
     font-size: 1.5rem; }
+    @media only screen and (max-width: 800px) {
+      .day-header-back {
+        font-size: 1rem; } }
     .day-header-back:hover {
       color: #9195ff;
       cursor: pointer; }
   .day-header-date {
     display: flex;
-    width: 50%;
     margin: auto;
     font-size: 3rem; }
+    @media only screen and (max-width: 800px) {
+      .day-header-date {
+        font-size: 2rem;
+        padding-right: 2rem; } }
+    @media only screen and (max-width: 400px) {
+      .day-header-date {
+        font-size: 1.25rem;
+        padding-right: 2.5rem; } }
   .day-header__item {
     margin-left: 2rem; }
